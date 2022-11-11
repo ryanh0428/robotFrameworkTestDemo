@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.1 (Python 3.10.6 on win32)" generated="20221111 09:56:47.613" rpa="false" schemaversion="3">
+<suite id="s1" name="Tour-Of" source="C:\Users\ryanh\Desktop\FDM training material\robot framework\001-DemoOfRobotFramework\tour-of.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Initialize Test Data</arg>
+<arg>Configure Selenium</arg>
+<arg>Navigate To Homepage</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Initialize Test Data" library="data">
+<kw name="Read Invoice Fixtures" library="data">
+<var>${json}</var>
+<kw name="Get File" library="OperatingSystem">
+<var>${json_data}</var>
+<arg>${EXECDIR}/invoice-fixtures.json</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20221111 09:56:47.851" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\ryanh\Desktop\FDM training material\robot framework\001-DemoOfRobotFramework\invoice-fixtures.json"&gt;C:\Users\ryanh\Desktop\FDM training material\robot framework\001-DemoOfRobotFramework\invoice-fixtures.json&lt;/a&gt;'.</msg>
+<msg timestamp="20221111 09:56:47.852" level="INFO">${json_data} = {
+    "demo" : {
+        "company_name" : "Beaufort Fairmont, LLC",
+        "type_of_work" : "Test Automation",
+        "status" : "Past Due",
+        "amount" : "521.20",
+        "due_date" : "2019-1...</msg>
+<status status="PASS" starttime="20221111 09:56:47.851" endtime="20221111 09:56:47.852"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${json}</var>
+<arg>json.loads('''${json_data}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221111 09:56:47.852" level="INFO">${json} = {'demo': {'company_name': 'Beaufort Fairmont, LLC', 'type_of_work': 'Test Automation', 'status': 'Past Due', 'amount': '521.20', 'due_date': '2019-12-31', 'description': 'Test Automation experts helpi...</msg>
+<status status="PASS" starttime="20221111 09:56:47.852" endtime="20221111 09:56:47.852"/>
+</kw>
+<msg timestamp="20221111 09:56:47.853" level="INFO">${json} = {'demo': {'company_name': 'Beaufort Fairmont, LLC', 'type_of_work': 'Test Automation', 'status': 'Past Due', 'amount': '521.20', 'due_date': '2019-12-31', 'description': 'Test Automation experts helpi...</msg>
+<status status="PASS" starttime="20221111 09:56:47.851" endtime="20221111 09:56:47.853"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Invoices}</arg>
+<arg>${json}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221111 09:56:47.854" level="INFO">${Invoices} = {'demo': {'company_name': 'Beaufort Fairmont, LLC', 'type_of_work': 'Test Automation', 'status': 'Past Due', 'amount': '521.20', 'due_date': '2019-12-31', 'description': 'Test Automation experts helpi...</msg>
+<status status="PASS" starttime="20221111 09:56:47.853" endtime="20221111 09:56:47.854"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:47.851" endtime="20221111 09:56:47.854"/>
+</kw>
+<kw name="Configure Selenium" library="system">
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>.5 Seconds</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20221111 09:56:47.854" endtime="20221111 09:56:47.854"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:47.854" endtime="20221111 09:56:47.855"/>
+</kw>
+<kw name="Navigate To Homepage" library="system">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${SiteUrl}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221111 09:56:47.856" level="INFO">Opening browser 'Chrome' to base url 'http://inv.beaufortfairmont.com'.</msg>
+<status status="PASS" starttime="20221111 09:56:47.855" endtime="20221111 09:56:51.349"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221111 09:56:51.349" endtime="20221111 09:56:51.979"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:47.855" endtime="20221111 09:56:51.979"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:47.850" endtime="20221111 09:56:51.979"/>
+</kw>
+<test id="s1-t1" name="Create An Invoice" line="16">
+<kw name="Get Dummy Invoice" library="data">
+<var>${invoice}</var>
+<arg>demo</arg>
+<kw name="Get From Dictionary" library="Collections">
+<var>${invoice}</var>
+<arg>${Invoices}</arg>
+<arg>${invoice_name}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20221111 09:56:51.980" level="INFO">${invoice} = {'company_name': 'Beaufort Fairmont, LLC', 'type_of_work': 'Test Automation', 'status': 'Past Due', 'amount': '521.20', 'due_date': '2019-12-31', 'description': 'Test Automation experts helping us ram...</msg>
+<status status="PASS" starttime="20221111 09:56:51.980" endtime="20221111 09:56:51.980"/>
+</kw>
+<kw name="Randomize Invoice Id" library="data">
+<arg>${invoice}</arg>
+<kw name="Generate Random Number" library="system">
+<var>${random_number}</var>
+<kw name="Evaluate" library="BuiltIn">
+<var>${random_number}</var>
+<arg>random.randint(1000000, 9999999)</arg>
+<arg>random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221111 09:56:51.981" level="INFO">${random_number} = 8354341</msg>
+<status status="PASS" starttime="20221111 09:56:51.980" endtime="20221111 09:56:51.981"/>
+</kw>
+<msg timestamp="20221111 09:56:51.981" level="INFO">${random_number} = 8354341</msg>
+<status status="PASS" starttime="20221111 09:56:51.980" endtime="20221111 09:56:51.981"/>
+</kw>
+<kw name="Update Invoice Id" library="data">
+<arg>${invoice}</arg>
+<arg>${random_number}</arg>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${invoice}</arg>
+<arg>id=${id}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221111 09:56:51.981" endtime="20221111 09:56:51.981"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:51.981" endtime="20221111 09:56:51.981"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:51.980" endtime="20221111 09:56:51.981"/>
+</kw>
+<msg timestamp="20221111 09:56:51.981" level="INFO">${invoice} = {'company_name': 'Beaufort Fairmont, LLC', 'type_of_work': 'Test Automation', 'status': 'Past Due', 'amount': '521.20', 'due_date': '2019-12-31', 'description': 'Test Automation experts helping us ram...</msg>
+<status status="PASS" starttime="20221111 09:56:51.980" endtime="20221111 09:56:51.981"/>
+</kw>
+<kw name="Navigate To Add Invoice" library="navigation">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:[href="#/addInvoice"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221111 09:56:51.982" level="INFO">Clicking element 'css:[href="#/addInvoice"]'.</msg>
+<status status="PASS" starttime="20221111 09:56:51.982" endtime="20221111 09:56:53.038"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:51.982" endtime="20221111 09:56:53.038"/>
+</kw>
+<kw name="Fill Out Invoice Details" library="invoice-details-page">
+<arg>${invoice}</arg>
+<kw name="Enter Invoice Number" library="invoice-details-page">
+<arg>${invoice["id"]}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:[ng-model="invoice.invoiceNo"]</arg>
+<arg>${invoice_id}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221111 09:56:53.040" level="INFO">Typing text '8354341' into text field 'css:[ng-model="invoice.invoiceNo"]'.</msg>
+<status status="PASS" starttime="20221111 09:56:53.040" endtime="20221111 09:56:54.631"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:53.039" endtime="20221111 09:56:54.631"/>
+</kw>
+<kw name="Enter Company Name" library="invoice-details-page">
+<arg>${invoice["company_name"]}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:[ng-model="invoice.companyName"]</arg>
+<arg>${company_name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221111 09:56:54.632" level="INFO">Typing text 'Beaufort Fairmont, LLC' into text field 'css:[ng-model="invoice.companyName"]'.</msg>
+<status status="PASS" starttime="20221111 09:56:54.632" endtime="20221111 09:56:56.223"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:54.631" endtime="20221111 09:56:56.223"/>
+</kw>
+<kw name="Enter Type of Work" library="invoice-details-page">
+<arg>${invoice["type_of_work"]}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:[ng-model="invoice.typeOfWork"]</arg>
+<arg>${type_of_work}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221111 09:56:56.225" level="INFO">Typing text 'Test Automation' into text field 'css:[ng-model="invoice.typeOfWork"]'.</msg>
+<status status="PASS" starttime="20221111 09:56:56.224" endtime="20221111 09:56:57.815"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:56.223" endtime="20221111 09:56:57.815"/>
+</kw>
+<kw name="Select Status" library="invoice-details-page">
+<arg>${invoice["status"]}</arg>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>css:[ng-model="invoice.status"]</arg>
+<arg>${status}</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20221111 09:56:57.817" level="INFO">Selecting options from selection list 'css:[ng-model="invoice.status"]' by value Past Due.</msg>
+<status status="PASS" starttime="20221111 09:56:57.816" endtime="20221111 09:57:01.934"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:57.815" endtime="20221111 09:57:01.934"/>
+</kw>
+<kw name="Enter Amount" library="invoice-details-page">
+<arg>${invoice["amount"]}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:[ng-model="invoice.price"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221111 09:57:01.936" level="INFO">Typing text '521.20' into text field 'css:[ng-model="invoice.price"]'.</msg>
+<status status="PASS" starttime="20221111 09:57:01.935" endtime="20221111 09:57:03.511"/>
+</kw>
+<status status="PASS" starttime="20221111 09:57:01.934" endtime="20221111 09:57:03.511"/>
+</kw>
+<kw name="Enter Due Date" library="invoice-details-page">
+<arg>${invoice["due_date"]}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:[ng-model="invoice.dueDate"]</arg>
+<arg>${due_date}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221111 09:57:03.513" level="INFO">Typing text '2019-12-31' into text field 'css:[ng-model="invoice.dueDate"]'.</msg>
+<status status="PASS" starttime="20221111 09:57:03.512" endtime="20221111 09:57:05.104"/>
+</kw>
+<status status="PASS" starttime="20221111 09:57:03.511" endtime="20221111 09:57:05.104"/>
+</kw>
+<kw name="Enter Description" library="invoice-details-page">
+<arg>${invoice["description"]}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:[ng-model="invoice.comment"]</arg>
+<arg>${description}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221111 09:57:05.107" level="INFO">Typing text 'Test Automation experts helping us ramp up our automation efforts.' into text field 'css:[ng-model="invoice.comment"]'.</msg>
+<status status="PASS" starttime="20221111 09:57:05.106" endtime="20221111 09:57:06.739"/>
+</kw>
+<status status="PASS" starttime="20221111 09:57:05.104" endtime="20221111 09:57:06.739"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:53.038" endtime="20221111 09:57:06.739"/>
+</kw>
+<kw name="Submit Invoice Form" library="invoice-details-page">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>createButton</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221111 09:57:06.740" level="INFO">Clicking button 'createButton'.</msg>
+<status status="PASS" starttime="20221111 09:57:06.740" endtime="20221111 09:57:08.828"/>
+</kw>
+<status status="PASS" starttime="20221111 09:57:06.739" endtime="20221111 09:57:08.828"/>
+</kw>
+<kw name="Get Invoice Id" library="data">
+<var>${invoice_id}</var>
+<arg>${invoice}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${invoice_id}</var>
+<arg>${invoice["id"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221111 09:57:08.830" level="INFO">${invoice_id} = 8354341</msg>
+<status status="PASS" starttime="20221111 09:57:08.829" endtime="20221111 09:57:08.830"/>
+</kw>
+<msg timestamp="20221111 09:57:08.830" level="INFO">${invoice_id} = 8354341</msg>
+<status status="PASS" starttime="20221111 09:57:08.829" endtime="20221111 09:57:08.830"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${invoice_id}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20221111 09:57:09.856" level="INFO">Current page contains text '8354341'.</msg>
+<status status="PASS" starttime="20221111 09:57:08.831" endtime="20221111 09:57:09.856"/>
+</kw>
+<kw name="Open Invoice" library="navigation">
+<arg>${invoice_id}</arg>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>css:#invoiceNo_${id} &gt; a</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20221111 09:57:09.857" level="INFO">Clicking link 'css:#invoiceNo_8354341 &gt; a'.</msg>
+<status status="PASS" starttime="20221111 09:57:09.857" endtime="20221111 09:57:11.425"/>
+</kw>
+<status status="PASS" starttime="20221111 09:57:09.856" endtime="20221111 09:57:11.425"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:51.979" endtime="20221111 09:57:11.425"/>
+</test>
+<kw name="Exit Selenium" library="system" type="TEARDOWN">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20221111 09:57:12.295" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20221111 09:57:11.427" endtime="20221111 09:57:12.295"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221111 09:57:12.296" endtime="20221111 09:57:14.849"/>
+</kw>
+<status status="PASS" starttime="20221111 09:57:11.426" endtime="20221111 09:57:14.849"/>
+</kw>
+<status status="PASS" starttime="20221111 09:56:47.615" endtime="20221111 09:57:14.849"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tour-Of">Tour-Of</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

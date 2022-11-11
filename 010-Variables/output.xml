@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.1 (Python 3.10.6 on win32)" generated="20221111 15:51:40.227" rpa="false" schemaversion="3">
+<suite id="s1" name="Variables" source="C:\Users\ryanh\Desktop\FDM training material\robot framework\010-Variables\variables.robot">
+<kw name="Navigate To Home Page" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221111 15:51:40.398" level="INFO">Opening browser 'Chrome' to base url 'http://inv.beaufortfairmont.com'.</msg>
+<status status="PASS" starttime="20221111 15:51:40.397" endtime="20221111 15:51:43.108"/>
+</kw>
+<status status="PASS" starttime="20221111 15:51:40.397" endtime="20221111 15:51:43.108"/>
+</kw>
+<test id="s1-t1" name="Using Variables" line="14">
+<kw name="Comment" library="BuiltIn">
+<arg>This test should use variables for the url and the browser.</arg>
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<status status="PASS" starttime="20221111 15:51:43.108" endtime="20221111 15:51:43.109"/>
+</kw>
+<status status="PASS" starttime="20221111 15:51:43.108" endtime="20221111 15:51:43.109"/>
+</test>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221111 15:51:43.110" endtime="20221111 15:51:45.211"/>
+</kw>
+<status status="PASS" starttime="20221111 15:51:40.229" endtime="20221111 15:51:45.211"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Variables">Variables</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

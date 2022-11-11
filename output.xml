@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.1 (Python 3.10.6 on win32)" generated="20221111 14:33:40.222" rpa="false" schemaversion="3">
+<suite id="s1" name="First-Test-Case" source="c:\Users\ryanh\Desktop\FDM training material\robot framework\005-TestCases\first-test-case.robot">
+<test id="s1-t1" name="Check invoice manager page" line="6">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>http://inv.beaufortfairmont.com/</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221111 14:33:40.402" level="INFO">Opening browser 'chrome' to base url 'http://inv.beaufortfairmont.com/'.</msg>
+<status status="PASS" starttime="20221111 14:33:40.402" endtime="20221111 14:33:42.364"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<var>${webElem}</var>
+<arg>class:page</arg>
+<arg>Invoice Manager</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20221111 14:33:42.365" level="INFO">Verifying element 'class:page' contains exact text 'Invoice Manager'.</msg>
+<msg timestamp="20221111 14:33:42.381" level="INFO">${webElem} = None</msg>
+<status status="PASS" starttime="20221111 14:33:42.364" endtime="20221111 14:33:42.381"/>
+</kw>
+<status status="PASS" starttime="20221111 14:33:40.401" endtime="20221111 14:33:42.381"/>
+</test>
+<status status="PASS" starttime="20221111 14:33:40.232" endtime="20221111 14:33:42.382"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="First-Test-Case">First-Test-Case</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
